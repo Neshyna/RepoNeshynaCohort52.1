@@ -11,14 +11,15 @@ public class Task4 {
      */
     public static void main(String[] args) {
         int[] array = {2,3,4,5,6,7};
-        int[] res = removeElements(array, 4);
+        int[] res = removeElements(array, 6);
 
         System.out.println(Arrays.toString(res));
     }
     public static int[] removeElements(int[] array, int element){
         int count = 0;
         for (int i = 0; i < array.length; i++){
-            if (array[i] == element) count++;
+            if (array[i] == element)
+                count++;
         }
        // if (count == 0) return  array;
 
