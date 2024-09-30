@@ -16,6 +16,7 @@ public class HW15_Task1_Neshyna_cohort52_1 {
 
         Husband husband = new Husband();
 
+        System.out.println("The husband does each day: ");
         husband.keepCalmAndPayBills();
         husband.playDOTA();
         husband.work();
@@ -26,9 +27,11 @@ public class HW15_Task1_Neshyna_cohort52_1 {
 
         Mother mother = new Mother();
 
+        System.out.println("What skills mom has: ");
         mother.cooking();
         mother.watchKids();
         mother.shopping();
+
 
         Mother mother1 = new Mother( "married", "watching youtude and serials", 50, 170 );
         mother1.tellMeAboutYourself();
@@ -36,6 +39,7 @@ public class HW15_Task1_Neshyna_cohort52_1 {
 
         Friend friend = new Friend();
 
+        System.out.println("My friend is busy with: ");
         friend.party();
         friend.learnGerman();
         friend.playSport();
