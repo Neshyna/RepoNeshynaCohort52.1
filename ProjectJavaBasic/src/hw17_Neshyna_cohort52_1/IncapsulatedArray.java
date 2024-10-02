@@ -1,14 +1,18 @@
 package hw17_Neshyna_cohort52_1;
+/*
+Task 1
+Инкапсулировать класс нашего магического массива
+ */
 
 public class IncapsulatedArray {
-    int[] array;
-    int cursor;//default value = 0
+    private int[] array;
+    private int cursor;//default value = 0
 
     public IncapsulatedArray(){
-        array = new int[5];
+        array = new int[1];
 
     }
-    void add(int value){
+    public void setValue(int value){
         //add one element
         //check if there is free space in the array
         //if not , need to add free space
@@ -17,23 +21,23 @@ public class IncapsulatedArray {
             //make the array wider/larger//expand array
             expandArray();
         }
-        array[cursor] = value;
-        cursor++;
+        this.array[cursor] = value;
+        this.cursor++;
     }
     //dynamic expand array
 
-    void add(int ... numbers){
+    public void setMultipleValues(int ... numbers){
         //to work with numbers is the same as int array link
         //System.out.println("several int values accepted. exactly : " + numbers.length);
         //System.out.println("each int has index as at array. index 0: " + numbers[0]);
 
         for (int i = 0 ; i < numbers.length; i++){
-            add(numbers[i]);
+            setValue(numbers[i]);
         }
     }
 
-    void expandArray(){
-        System.out.println("expand array. cursor: " + cursor);
+    public void expandArray(){
+        //System.out.println("expand array. cursor: " + cursor);
         //create new array twice larger
         //rewrite all values to new array from old array(till cursor)
         //new link
@@ -45,9 +49,9 @@ public class IncapsulatedArray {
         }
         array = newArray;
         //give link. variable array keeps link of a new array
-        System.out.println("array expand finished");
+       // System.out.println("array expand finished");
     }
-    public  String toString(){
+    public String getPrintedArray(){
         //return string array representation
 
         if (cursor==0) return "[]";
@@ -59,22 +63,37 @@ public class IncapsulatedArray {
         }
         return result;
     }
-    int size(){
+    public int getSize(){
         return cursor;
+        //return array.length;
     }
 
     //return value by index
-    int get(int index){
-        if(index >= 0 && index < cursor){
-            return  array[index];
-        }
-        return Integer.MIN_VALUE;
-        //there is no good variant for else case
-        //need to think how to describe this case better
-        //how to work correctly with index when it is incorrect
-        //in case index is incorrect
+    public int getValue(int index){
+
+        for (int i = 0; i < array.length; i++){
+            if(index >= 0 && i < cursor){
+                return array[index];
+            }return  -1;
+        }return index;
     }
-    int remove (int index){
+    //return index by value
+    public int getIndex(int value){
+
+        int i = 0;
+
+        while ( i < cursor){
+
+            if (array[i] == value){
+                return i;
+            }
+            i++;
+        }
+        return -1;
+    }
+
+
+    public int removeByIndex (int index){
          /*
         1. Проверка индекса на валидность
         2. Удалить значение по индексу
@@ -96,14 +115,14 @@ public class IncapsulatedArray {
 
         } else {
 //           Индекс не валидный
-            // Todo поправить возвращаемое значение при невалидном индексе
+
             return Integer.MIN_VALUE;
         }
     }
 
     // Поиск по значению. Первое вхождение
     // {1, 100, 5, 5, 100} -> 100 метод вернет индекс первого найдено вхождения = 1
-    int indexOf(int value) {
+    public int getFirstIndex(int value) {
         for (int i = 0; i < cursor; i++) {
             if (array[i] == value) {
                 return i;
@@ -114,7 +133,7 @@ public class IncapsulatedArray {
 
     // Метод поиска по значению. Поиск последнего вхождения
     // {1, 100, 5, 5, 100} -> 100 метод вернет индекс последнего найдено вхождения = 4
-    int lastIndexOf(int value) {
+    public int getLastIndexOf(int value) {
         for(int i = cursor -1; i >= 0 ;  i--) {
             if (array[i] == value) {
                 return i;
@@ -130,11 +149,19 @@ public class IncapsulatedArray {
         2. Если элемента нет - вернуть false
         3. Если элемент есть - удалить и вернуть true - вызвать удаление по индексу
          */
-        int index = indexOf(value);
+        int index = getFirstIndex(value);
         if (index == -1) return false;
 
-        remove(index);
+        removeByIndex(index);
         return true;
+    }
+    public void setNewValueToElement(int newValue, int index){
+
+        for(int i =0; i < array.length;i++){
+            if(i == index){
+                array[i] = newValue;
+            }
+        }
     }
 
 
