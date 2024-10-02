@@ -20,7 +20,7 @@ public class HW16_Task0 {
     void addElement(int element) {
 
         if (cursor == array.length -1){
-            MagicArray();
+            magicArray();
         }
 
         array[cursor] = element;
@@ -44,7 +44,7 @@ public class HW16_Task0 {
 
         int i = 0;
 
-        while ( i < array.length){
+        while ( i < cursor){
 
             if (array[i] == value){
                 return i;
@@ -72,7 +72,7 @@ public class HW16_Task0 {
         }
     }
 
-    void MagicArray() {
+    void magicArray() {
 
         int[] magicArray = new int[array.length * 2];
 
@@ -82,11 +82,12 @@ public class HW16_Task0 {
         array = magicArray;
     }
 
-     public int[] removeByIndex (int indexToDelete){
+     public int removeByIndex (int indexToDelete){
 
+        int oldValue = array[indexToDelete];
         if( indexToDelete < 0 || indexToDelete >= array.length) {
             System.out.println("index not found");
-            return array;
+
         }
 
         int [] newArray = new int[array.length -1];
@@ -97,14 +98,22 @@ public class HW16_Task0 {
                 newArray[j++] = array[i];
             }
         }
+
+        //moves cursor and allow to print array without 0 in the end
+        for (int i = indexToDelete; i < cursor -1; i++){
+            array[i] = array[i + 1];
+        }
+        cursor--;
+
         System.out.println("remove by index: " + printArray(newArray));
-        return newArray;
+        return oldValue;//return old value
     }
 
 
     public int[] removeByValue (int valueToDelete){
 
-        int indexToDelete = -1;
+
+        int indexToDelete = indexOf(valueToDelete,array);
         for(int i = 0; i < array.length; i++){
             if (array[i] == valueToDelete){
                indexToDelete = i;
@@ -119,9 +128,52 @@ public class HW16_Task0 {
                 newArray2[j++] = array[i];
             }
         }
+
+        //moves cursor and allow to print array without 0 in the end
+        for (int i = indexToDelete; i < cursor -1; i++){
+            array[i] = array[i + 1];
+        }
+        cursor--;
+
         System.out.println("remove by value: " + printArray(newArray2));
         return newArray2;
     }
+    boolean removeBV(int value){
+        int index = indexOf(value,array);
+        if(index == -1)
+            return false;//if there is element with the value in the array
 
+        removeByIndex(index);
+        return true;
+
+
+    }
+
+    int remove(int index) {
+        /*
+        1. Проверка индекса на валидность
+        2. Удалить значение по индексу
+        3. Передвинуть курсор (т.к. кол-во элементов уменьшилось)
+        4. Вернуть старое значение
+        */
+
+        if (index >= 0 && index < cursor) {
+            // Логика удаления
+            int value = array[index]; // значение, которое я должен вернуть
+
+            // Перебираем элементы начиная с индекса и перезаписываем значениями из соседней правой ячейки
+            for (int i = index; i < cursor - 1; i++) { // граница перебора индексов?
+                array[i] = array[i + 1];
+            }
+            cursor--;
+
+            return value; // возвращаем старое значение
+
+        } else {
+//           Индекс не валидный
+            // Todo поправить возвращаемое значение при невалидном индексе
+            return Integer.MIN_VALUE;
+        }
+    }
 
 }

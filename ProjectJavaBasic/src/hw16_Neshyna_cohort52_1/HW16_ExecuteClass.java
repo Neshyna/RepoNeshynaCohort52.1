@@ -10,6 +10,9 @@ public class HW16_ExecuteClass {
         hw16Task0.addElement(4);
         hw16Task0.addElement(7);
 
+        //delete by value
+        hw16Task0.removeByValue(7);
+
         //print array
         System.out.println(hw16Task0.printArray(hw16Task0.array));
 
@@ -35,11 +38,12 @@ public class HW16_ExecuteClass {
         System.out.println("multiple add: " + hw16Task0.printArray(hw16Task0.array));
 
         //create magic array
-        hw16Task0.MagicArray();
+        hw16Task0.magicArray();
         System.out.println("magic array created");
 
         hw16Task0.addElement(1);
         System.out.println("print new magic array" + hw16Task0.printArray(hw16Task0.array));
+
 
         //delete by index
         hw16Task0.removeByIndex(3);
