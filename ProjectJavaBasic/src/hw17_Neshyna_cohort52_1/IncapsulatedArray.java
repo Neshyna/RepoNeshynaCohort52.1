@@ -1,10 +1,10 @@
-package lesson16;
+package hw17_Neshyna_cohort52_1;
 
-public class MagicArray {
+public class IncapsulatedArray {
     int[] array;
     int cursor;//default value = 0
 
-    public MagicArray(){
+    public IncapsulatedArray(){
         array = new int[5];
 
     }

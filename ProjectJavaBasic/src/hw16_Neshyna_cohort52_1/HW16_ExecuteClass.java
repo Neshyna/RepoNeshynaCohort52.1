@@ -6,12 +6,9 @@ public class HW16_ExecuteClass {
         HW16_Task0 hw16Task0 = new HW16_Task0();
 
        //add element
-        hw16Task0.addElement(9);
-        hw16Task0.addElement(4);
+        hw16Task0.addElement(8);
         hw16Task0.addElement(7);
-
-        //delete by value
-        hw16Task0.removeByValue(7);
+        hw16Task0.addElement(9);
 
         //print array
         System.out.println(hw16Task0.printArray(hw16Task0.array));
@@ -34,7 +31,7 @@ public class HW16_ExecuteClass {
 
 
        //add multiple elements
-        hw16Task0.addMultipleElements(5,3,2);
+        hw16Task0.addMultipleElements(5,3,2,8,3,5,10,2);
         System.out.println("multiple add: " + hw16Task0.printArray(hw16Task0.array));
 
         //create magic array
@@ -49,8 +46,9 @@ public class HW16_ExecuteClass {
         hw16Task0.removeByIndex(3);
 
         //delete by value
-        hw16Task0.removeByValue(2);
+        hw16Task0.removeByValue(9);
 
-
+        //last index of
+        System.out.println("last index of" + hw16Task0.lastIndexOf(2));
     }
 }

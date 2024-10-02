@@ -174,6 +174,17 @@ public class HW16_Task0 {
             // Todo поправить возвращаемое значение при невалидном индексе
             return Integer.MIN_VALUE;
         }
-    }
 
+    }
+    // Метод поиска по значению. Поиск последнего вхождения
+    // {1, 100, 5, 5, 100} -> 100 метод вернет индекс последнего найдено вхождения = 4
+    int lastIndexOf(int value) {
+
+        for(int i = cursor -1; i >= 0 ;  i--) {
+            if (array[i] == value) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
