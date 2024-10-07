@@ -36,7 +36,7 @@ public class IncapsulatedArray {
         }
     }
 
-    public void expandArray(){
+    private void expandArray(){
         //System.out.println("expand array. cursor: " + cursor);
         //create new array twice larger
         //rewrite all values to new array from old array(till cursor)
