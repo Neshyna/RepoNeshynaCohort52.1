@@ -1,5 +1,7 @@
 package hw18_neshyna_cohort52_1;
 
+import java.util.Random;
+
 public class Dog2 {
      /*
 Task 2 * (Опционально)
@@ -57,5 +59,21 @@ Task 2 * (Опционально)
         jump();
         System.out.println("done");
         }
+    }
+    public void randomValuesForArray(){
+
+        Random random = new Random();
+
+        int[] barrierArray = new int[7];
+
+        int k = 0;
+
+        System.out.print("[");
+        while (k < barrierArray.length) {
+            barrierArray[k] = 70 + random.nextInt(101) ;
+            System.out.println(barrierArray[k] + " , ");
+            k++;
+        }
+        System.out.println("]");
     }
 }

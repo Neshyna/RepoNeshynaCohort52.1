@@ -27,18 +27,31 @@ public class Task1_Calculator {
         int sum = x + y;
         return sum;
     }
+    /*public static int sum(int a, int ... ints){
+        int sum = a;
+        for(int i = 0; i < ints.length, i++){
+            sum += ints[i];
+
+        }return  sum;
+    }*/
     public static int subtraction(int x, int y){
         int subtraction = x - y;
         return subtraction;
     }
     public static int division (int x, int y){
+        if(x == 0){
+            return Integer.MAX_VALUE;
+        }
+
         int division = x/y;
+
         return division;
     }
     public static int prductOfNumbers(int x, int y){
         int productOfNumbers = x * y;
         return productOfNumbers;
     }
+
 
 }
 
