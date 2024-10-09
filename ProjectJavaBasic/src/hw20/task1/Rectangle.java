@@ -1,6 +1,6 @@
-package hw20;
+package hw20.task1;
 
-public class Rectangle extends Shape{
+public class Rectangle extends Shape {
     private double width;
     private double height;
 

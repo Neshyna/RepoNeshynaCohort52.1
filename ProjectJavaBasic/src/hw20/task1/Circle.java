@@ -1,6 +1,6 @@
-package hw20;
+package hw20.task1;
 
-public class Circle extends Shape{
+public class Circle extends Shape {
 
     private double radius;
     private static final double PI = 3.141519;

@@ -1,4 +1,4 @@
-package hw20;
+package hw20.task1;
 
 public class ShapeMain {
 

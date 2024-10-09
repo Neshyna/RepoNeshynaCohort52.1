@@ -1,6 +1,7 @@
 package lesson20.transport;
 // bus is-a vehicle
-public class Bus extends Vehical {
+public class
+Bus extends Vehical {
 
     private int capacity;
     private int countPassengers;
