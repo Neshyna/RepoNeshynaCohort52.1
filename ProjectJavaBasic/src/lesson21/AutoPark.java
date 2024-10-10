@@ -25,11 +25,39 @@ public class AutoPark {
 
         Passenger passenger = new Passenger("John");
         Passenger passenger1 = new Passenger("Margo");
+        Passenger passenger2 = new Passenger("Pond");
+        Passenger passenger3 = new Passenger("Phuwin");
+
         bus.takePassenger(passenger);
         bus.showListPassengers();
         bus.takePassenger(passenger1);
         bus.showListPassengers();
         bus.takePassenger(passenger1);
+        System.out.println();
+        bus.takePassenger(passenger2);
+        bus.takePassenger(passenger3);
+        bus.showListPassengers();
+
+
+
+
+        System.out.println("=========drop==========");
+        bus.dropPassenger(passenger1);
+        System.out.println();
+        bus.showListPassengers();
+        System.out.println();
+        bus.dropPassenger(passenger);
+        System.out.println();
+        bus.showListPassengers();
+        System.out.println();
+        bus.dropPassenger(passenger3);
+        System.out.println();
+        bus.showListPassengers();
+        System.out.println();
+        bus.dropPassenger(passenger1);
+        System.out.println();
+        bus.showListPassengers();
+
 
 
 
