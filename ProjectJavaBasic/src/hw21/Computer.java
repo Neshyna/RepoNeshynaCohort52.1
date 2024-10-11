@@ -6,9 +6,12 @@ public class Computer {
     private Memory memory;
     private Storage storage;
 
-    public Computer(Processor processor, Memory memory, Storage storage) {
-        this.processor = processor;
-        this.memory = memory;
+    private String model;
+
+    public Computer( String model, Storage storage) {
+        this.processor = new Processor("fgh","hggf");
+        this.memory = new Memory("jhgjfh", "djfhgjf");
         this.storage = storage;
+        this.model = model;
     }
 }
