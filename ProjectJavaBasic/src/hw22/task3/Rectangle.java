@@ -5,7 +5,7 @@ public class Rectangle extends Shape{
     private double width;
     private double height;
 
-    private String name = "rectangle";
+    private String name = "rectangle ";
 
     public String getName() {
         return name;

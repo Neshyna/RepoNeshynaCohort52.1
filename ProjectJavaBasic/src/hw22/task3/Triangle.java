@@ -5,7 +5,7 @@ public class Triangle extends Shape{
     private double height;
     private double sideLength;
 
-    private String name = "triangle";
+    private String name = "triangle ";
 
     public String getName() {
         return name;
