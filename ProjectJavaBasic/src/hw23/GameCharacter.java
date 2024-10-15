@@ -19,22 +19,5 @@ abstract class GameCharacter {
 
     abstract void attack();
 
-    public void arrayGameCharachter(){
 
-        GameCharacter[] gameCharacters = new GameCharacter[3];
-
-        GameCharacter warrior = new Warrior("warrior");
-        GameCharacter mage = new Mage("mage");
-        GameCharacter archer = new Archer("archer");
-
-        gameCharacters[0] = warrior;
-        gameCharacters[1] = mage;
-        gameCharacters[2] = archer;
-
-        for(int i = 0; i < gameCharacters.length; i++){
-            gameCharacters[i].attack();
-        }
-
-
-    }
 }
