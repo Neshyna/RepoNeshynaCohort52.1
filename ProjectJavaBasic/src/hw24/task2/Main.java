@@ -1,52 +1,42 @@
 package hw24.task2;
 
 import lesson24.interfaces.Book;
+/*
+Task 2
+Платежные системы
+Создайте интерфейс PaymentSystem с методами:
+
+withdrawMoney(double amount) (снятие со счета) - списываются деньги со счета
+depositTransfer(double amount) (поступление денег на счет);
+checkBalance() (остаток на счете).
+
+Напишите классы BankAccount и ElectronicWallet, которые реализуют данный интерфейс.
+
+Банк предоставляет счета, например, в евро, а электронный кошелек в другой валюте
+
+Убедитесь, что каждый класс корректно выполняет каждую из операций.
+ */
 
 public class Main {
 
     public static void main(String[] args) {
 
-        ElectronicWallet electronicWallet = new ElectronicWallet(100," dollars");
-        BankAccount bankAccount = new BankAccount(200, " euro");
+        BankAccount bankAccount = new BankAccount(10000, "ABank");
 
-        System.out.println("=======electronic wallet==========");
-        electronicWallet.checkBalance();
-        electronicWallet.depositTransfer();
+        System.out.println(bankAccount);
 
-        electronicWallet.setAmount(600);
-        electronicWallet.withdrawMoney();
+        bankAccount.withdrawMoney(100000);
+        System.out.println(bankAccount.checkBalance());
 
-        System.out.println("====bank account=======");
-        bankAccount.checkBalance();
-        bankAccount.depositTransfer();
+        bankAccount.withdrawMoney(150);
+        bankAccount.depositTransfer(50000);
+        System.out.println(bankAccount.checkBalance());
 
-        bankAccount.setAmount(900);
-        bankAccount.withdrawMoney();
+        ElectronicWallet wallet = new ElectronicWallet(2, "Bin wallet");
+        System.out.println(wallet);
 
-        System.out.println("===transfer money===");
-        electronicWallet.setReceiver("Bank");
-        electronicWallet.setSender("Wallet");
-        electronicWallet.setAmount(300);
-        electronicWallet.setCurrency("dollars");
-        electronicWallet.transferMoney();
-
-        bankAccount.setReceiver("wallet");
-        bankAccount.setSender("bank");
-        bankAccount.setCurrency("euro");
-        bankAccount.setAmount(500);
-        bankAccount.transferMoney();
-
-        bankAccount.setReceiver("Bank");
-        bankAccount.setSender("bank");
-        bankAccount.setCurrency("euro");
-        bankAccount.setAmount(500);
-        bankAccount.transferMoney();
-
-        bankAccount.setReceiver("wallet");
-        bankAccount.setSender("wallet");
-        bankAccount.setCurrency("euro");
-        bankAccount.setAmount(500);
-        bankAccount.transferMoney();
+        wallet.withdrawMoney(.5);
+        System.out.println(wallet.checkBalance());
 
     }
 }

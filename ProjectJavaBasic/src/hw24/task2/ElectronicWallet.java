@@ -2,69 +2,65 @@ package hw24.task2;
 
 public class ElectronicWallet implements PaymentSystem {
 
-    double amount = 0;
-    String currency;
+    private double balance;
+    private String title;
+    private String currency;
 
-    String sender ;
-    String receiver;
-
-    public ElectronicWallet(double amount, String currency) {
-        this.amount = amount;
-        this.currency = currency;
-        this.sender = sender;
-        this.receiver = receiver;
-
+    public ElectronicWallet(double balance, String title) {
+        this.balance = balance;
+        this.title = title;
+        this.currency = "BTC";
     }
 
-    @Override
-    public void withdrawMoney() {
-        System.out.println("withdraw  " + getAmount() + getCurrency());
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    @Override
-    public void depositTransfer() {
-        System.out.println("deposit  " + amount + currency);
+    public double getBalance() {
+        return balance;
     }
 
-    @Override
-    public void checkBalance() {
-        System.out.println("check  " + amount + currency);
-    }
-
-    @Override
-    public void transferMoney() {
-        System.out.printf("transfer %f %s from %s to %s\n" ,getAmount(),getCurrency(),getSender(),getReceiver());
-    }
-
-    public void setSender(String sender) {
-        this.sender = sender;
-    }
-
-    public void setReceiver(String receiver) {
-        this.receiver = receiver;
-    }
-
-    public String getSender() {
-        return sender;
-    }
-
-    public String getReceiver() {
-        return receiver;
-    }
-
-    public double getAmount() {
-        return amount;
+    public String getTitle() {
+        return title;
     }
 
     public String getCurrency() {
         return currency;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    @Override
+    public void withdrawMoney(double amount) {
+        if (amount < 0 || amount > balance) {
+            System.out.println("Insufficient balance");
+            return;
+        }
+        System.out.println("Withdrawing " + amount + " from bank " + title );
+        balance -= amount;
+
     }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
+    @Override
+    public void depositTransfer(double amount) {
+        if (amount < 0 ) {
+            System.out.println("Недопустимая сумма");
+            return;
+        }
+
+        System.out.println("Deposit " + amount + " to " + title );
+        balance += amount;
+    }
+
+    @Override
+    public double checkBalance() {
+        return balance;
+    }
+
+    @Override
+    public String toString() {
+        return "ElectronicWallet{" +
+                "balance=" + balance +
+                ", title='" + title + '\'' +
+                ", currency='" + currency + '\'' +
+                '}';
     }
 }

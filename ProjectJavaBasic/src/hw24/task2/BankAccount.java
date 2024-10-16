@@ -2,52 +2,61 @@ package hw24.task2;
 
 public class BankAccount implements PaymentSystem{
 
-    double amount = 0;
-    String currency;
+    private double balance;
+    private String title;
+    private final String currency;
 
-    String sender ;
-    String receiver;
+    public BankAccount(double balance, String title) {
+        this.balance = balance;
+        this.title = title;
+        this.currency = "EUR";
+    }
 
-    public BankAccount(double amount, String currency) {
-        this.amount = amount;
-        this.currency = currency;
-        this.sender = sender;
-        this.receiver = receiver;
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     @Override
-    public void withdrawMoney() {
-        System.out.println("withdraw  " + amount + currency);
+    public String toString() {
+        return "BankAccount{" +
+                "balance=" + balance + " " + currency +
+                ", title='" + title + '\'' +
+                '}';
     }
 
     @Override
-    public void depositTransfer() {
-        System.out.println("deposit  " + amount + currency);
+    public void withdrawMoney(double amount) {
+        if (amount < 0 || amount > balance) {
+            System.out.println("Insufficient balance");
+            return;
+        }
+        System.out.println("Withdrawing " + amount + " from bank " + title );
+        balance -= amount;
+
     }
 
     @Override
-    public void checkBalance() {
-        System.out.println("check balance  " + amount + currency);
+    public void depositTransfer(double amount) {
+        if (amount < 0 ) {
+            System.out.println("Недопустимая сумма");
+            return;
+        }
+
+        System.out.println("Deposit " + amount + " to " + title );
+        balance += amount;
     }
 
     @Override
-    public void transferMoney() {
-        System.out.printf("transfer %f %s from %s to %s\n" ,amount,currency,sender,receiver);
+    public double checkBalance() {
+        return balance;
     }
 
-    public void setSender(String sender) {
-        this.sender = sender;
-    }
-
-    public void setReceiver(String receiver) {
-        this.receiver = receiver;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
+    @Override
+    public Object getCurrency() {
+        return null;
     }
 }
