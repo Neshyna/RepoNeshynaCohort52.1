@@ -15,7 +15,7 @@ public class MagicArrayGen<T> {
     void addElement(T element) {
 
         if (cursor == array.length -1){
-            magicArray();
+            expandArray();
         }
 
         array[cursor] = element;
@@ -41,7 +41,7 @@ public class MagicArrayGen<T> {
 
         while ( i < cursor){
 
-            if (array[i] == value){
+            if (this.array[i] == value){
                 return i;
             }
             i++;
@@ -67,7 +67,7 @@ public class MagicArrayGen<T> {
         }
     }
 
-    void magicArray() {
+    void expandArray() {
 
         T[] magicArray = (T[]) new Object[array.length * 2];//why should I turn array to object?
 
@@ -131,7 +131,7 @@ public class MagicArrayGen<T> {
         cursor--;
 
         System.out.println("remove by value: " + printArray(newArray2));
-        return newArray2;
+        return newArray2;//returns new array without deleted element, not secure as well as array can be changed by user
     }
     boolean removeBV(T value){
         int index = indexOf(value,array);
