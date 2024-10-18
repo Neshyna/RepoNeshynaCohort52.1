@@ -17,12 +17,12 @@ Task 2. * Опционально
  */
 public class PrintTwoLists {
 
-    public static String printTwoLists(MyListClassGen array, MyListClassGen array2){
+    public static <T,U> void printTwoLists(MyListClassGen<T> array, MyListClassGen<U> array2){
 
         if (array == null || array.isEmpty()){
 
             if (array2 == null || array2.isEmpty()) {
-                return "[]";
+                System.out.println( "[]");
             }
             printArray(array2);
         }
@@ -43,7 +43,7 @@ public class PrintTwoLists {
             sb.append((i < array2.size() - 1) ? ", " : "]");
 
         }
-        return sb.toString();
+        System.out.println(sb.toString());
     }
     public static String printArray(MyListClassGen array) {
         if (array == null || array.size() == 0) return "[]";

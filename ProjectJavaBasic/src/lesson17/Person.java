@@ -10,6 +10,10 @@ public class Person {
         this.age = age;
         this.hobby = hobby;
     }
+
+    public Person(String john) {
+    }
+
     public String toString(){
         return String.format("Person %s, Age: %d, Hobby: %s" ,name ,age, hobby);
     }

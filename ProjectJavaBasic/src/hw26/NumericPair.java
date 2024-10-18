@@ -12,35 +12,26 @@ Task3 * Опционально
 Метод double sum() возвращает сумму этих чисел.
  */
 
-public class NumericPair<T> {
+public class NumericPair<T extends Number, E extends Number> {
 
     private T x;
-    private T y;
+    private E y;
 
-    public NumericPair(T x, T y) {
+    public NumericPair(T x, E y) {
         this.x = x;
         this.y = y;
     }
 
-    public static <T extends Number> double sum(T x, T y){
+    public double sum(){
         return x.doubleValue() + y.doubleValue();
     }
 
-    public T getX() {
-        return x;
-    }
-
-    public T getY() {
-        return y;
-    }
-
-
     public static void main(String[] args) {
 
-        NumericPair<Integer> intPair = new NumericPair<>(10, 20);
-        System.out.println(intPair.sum(intPair.getX(), intPair.getY())); // Вывод: 30.0
+        NumericPair<Integer, Double> intPair = new NumericPair<>(10, 2.0);
+        System.out.println(intPair.sum());
 
-        NumericPair<Double> doublePair = new NumericPair<>(5.5, 4.5);
-        System.out.println(doublePair.sum(doublePair.getX(), doublePair.getY())); // Вывод: 10.0
+        NumericPair<Double, Integer> doublePair = new NumericPair<>(5.5, 4);
+        System.out.println(doublePair.sum());
     }
 }

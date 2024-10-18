@@ -19,12 +19,7 @@ public class PrintTwoListMain {
     list2.add(3.45);
     list2.add(4.78);
 
-    System.out.println(printTwoLists(list1,list2));
-
-
-
-
-
+    printTwoLists(list1,list2);
 
 }
 
