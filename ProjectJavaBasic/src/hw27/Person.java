@@ -23,6 +23,12 @@ public class Person {
         }
     }
 
+    public void setPassword(String password) {
+        if (isPasswordValid(password)) {
+            this.password = password;
+        }
+    }
+
     private boolean isEmailValid(String email) {
     /*
     Task 1
@@ -60,48 +66,76 @@ public class Person {
         if(! hasLettersAndNumerals(email)) return false;
         if(! containsSpecialCharacters(email)) return false;
 
-
         return true;
-
     }
+
     public boolean hasLettersAndNumerals(String email) {
-        boolean hasLetter = false;
+
         boolean hasNumber = false;
+        boolean chUp = false;
+        boolean chLow = false;
 
         for (int i = 0; i < email.length(); i++) {
             char ch = email.charAt(i);
 
-            if (Character.isLetter(ch)) {
-                hasLetter = true;
-            } else if (Character.isDigit(ch)) {
+            if (Character.isUpperCase(ch)){
+                chUp = true;
+            }else if (Character.isLowerCase(ch)){
+                chLow = true;
+            }else if (Character.isDigit(ch)) {
                 hasNumber = true;
             }
-            if (hasLetter && hasNumber) {
+            if (chLow && chUp && hasNumber) {
                 return true;
             }
         }
+        // error message
+        if (!chUp) {
+            System.out.println("Insert uppercase letter");
+        }
+        if (!chLow) {
+            System.out.println("Insert lowercase letter");
+        }
+        if (!hasNumber) {
+            System.out.println("Insert numeral");
+        }
+
         return false;
     }
 
     public boolean containsSpecialCharacters(String email) {
         for (int i = 0; i < email.length(); i++) {
             char ch = email.charAt(i);
-            if (ch == '-' || ch == '_' || ch == '.' || ch == '@') {
+            if (ch == '-' || ch == '_' || ch == '.' || ch == '@' || ch == '%' || ch == '!' || ch == '&' || ch == '*' || ch == ',' || ch == '(' || ch == ')') {
                 return true;
             }
         }
+
         return false;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public boolean isPasswordValid(String password){
+       boolean b1 = password.length() >= 8;
+       if (!b1){
+           System.out.println("Check pass length");
+       }
+       boolean b2 = hasLettersAndNumerals(password);
+       boolean b3 = containsSpecialCharacters(password);
+       if (!b3){
+           System.out.println("Insert special symbols");
+       }
+
+       return b1 && b2 && b3;
     }
+
 
     public static void main(String[] args) {
 
         Person person = new Person("email","password");
 
-        System.out.println("is email valid?  " + person.isEmailValid("t123_ext@gmail.com"));
+        System.out.println("is email valid?  " + person.isEmailValid("Test_123@gmail.com"));
+
+        System.out.println("is password valid? " + person.isPasswordValid("Test_123"));
 
     }
 }
