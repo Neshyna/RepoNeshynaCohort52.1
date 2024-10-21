@@ -1,5 +1,6 @@
 package lesson28;
 
+import hw28.Rectangle;
 import lists.MyListClassGen;
 
 import java.util.Objects;
@@ -70,6 +71,7 @@ public class Employee {
         return result;
     }
 
+
     public static void main(String[] args) {
         MyListClassGen<Employee> employee = new MyListClassGen<>();
         Employee employee1 = new Employee("Peter", "Petrov", "21.10.2000");
@@ -77,7 +79,7 @@ public class Employee {
         Employee employee3 = new Employee("Ivan", "Ivanov", "15.01.2001");
         Employee employee4 = new Employee("Ivan", "Ivanov", "15.01.2001");
 
-        System.out.println(employee3 == employee4);//false
+        System.out.println(employee3 == employee4);//falses
         System.out.println(employee3.equals(employee4));//better use equals
 
 

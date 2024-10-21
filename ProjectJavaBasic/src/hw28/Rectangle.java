@@ -1,5 +1,12 @@
 package hw28;
 
+
+import lists.MyArrayList;
+import lists.MyList;
+import lists.MyListClassGen;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /*
@@ -88,6 +95,33 @@ public class Rectangle {
 
     }
 
+    public static void removeDuplicates(MyArrayList<Rectangle> rectangles,Rectangle rectangle) {
+        /*
+        Task 3. Опционально задание
+Удаление дубликатов из списка объектов “Rectangle”
+Создайте метод, который принимает список объектов Rectangle и объект Rectangle, и удаляет
+ из списка все объекты, которые равны переданному объекту (по значению полей length и width).
+
+Требования:
+Метод удаления дубликатов:
+- Реализуйте метод removeDuplicates, который принимает список List<Rectangle> и объект Rectangle.
+- Метод должен удалить из списка все объекты, которые равны переданному объекту
+(используя переопределённый метод equals()).
+Метод main():
+- Создайте список MyArrayList<Rectangle> и добавьте в него несколько объектов, включая дубликаты.
+- Вызовите метод removeDuplicates, передав ему список и объект Rectangle,
+дубликаты которого нужно удалить.
+- Выведите на экран список до и после удаления дубликатов.
+
+         */
+
+        for (int i = rectangles.size() - 1; i >= 0; i--) {
+            if (rectangles.get(i).equals(rectangle)) {
+                rectangles.remove(i);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         Rectangle rectangle1 = new Rectangle(2.4,4.2);
         Rectangle rectangle2 = new Rectangle(3.5,6.7);
@@ -107,5 +141,23 @@ public class Rectangle {
         System.out.println("rectangle 4 = rectangle 5 " + rectangle4.equals(rectangle5));
         System.out.println("rectangle 6 = rectangle 7 " + rectangle6.equals(rectangle7));
         System.out.println("rectangle 5 = rectangle 1 " + rectangle5.equals(rectangle1));
+
+
+        System.out.println("========task 3=========");
+
+        MyArrayList<Rectangle> rectangles = new MyArrayList<>();
+
+        rectangles.add(new Rectangle(4.0, 2.0));
+        rectangles.add(new Rectangle(5.0, 3.0)); // Дубликат
+        rectangles.add(new Rectangle(6.0, 4.0));
+        rectangles.add(new Rectangle(5.0, 3.0)); // Дубликат
+
+        System.out.println(rectangles.toString());//before delete
+        Rectangle rectangleToRemove = new Rectangle(5.0, 3.0);
+        removeDuplicates(rectangles, rectangleToRemove);
+        System.out.println(rectangles.toString());//after delete
+
+
+
     }
 }

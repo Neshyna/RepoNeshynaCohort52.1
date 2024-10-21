@@ -4,17 +4,18 @@ import java.lang.reflect.Array;
 
 public class MyListClassGen<T> implements MyList<T> {
 
-    private T[] array ;
+    private T[] array;
     private int cursor;
 
     @Override
-    public void add(Object value) {
-        array[cursor] = (T) value;
+    public void add(T value){
+
+        array[cursor] = value;
         cursor++;
     }
 
     @Override
-    public void addAll(Object[] values) {
+    public void addAll(T[] values) {
         for (int i = 0; i < values.length; i++) {
             add(values[i]);
         }

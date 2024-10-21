@@ -7,6 +7,7 @@ public class MyListClassGen<T> implements MyList {
 
     @Override
     public void add(Object value) {
+
         array[cursor] = (T) value;
         cursor++;
     }
