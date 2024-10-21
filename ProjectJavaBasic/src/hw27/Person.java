@@ -61,10 +61,40 @@ public class Person {
         //3
         int countAfterDot = email.length() - dotIndexAfterAt - 1;
         if (countAfterDot < 2) return false;
+        // 3. После последней точки есть 2 или более символов
+        // test@fazx.com.ne.t
+        //int lastDotIndex = email.lastIndexOf('.');
+        //if (lastDotIndex + 2 >= email.length()) return false;
 
         //4
         if(! hasLettersAndNumerals(email)) return false;
         if(! containsSpecialCharacters(email)) return false;
+        /*
+         // 4.  Алфавит, цифры, '-', '_', '.', '@'
+
+        Я беру каждый символ. Проверяю, что он не является "запрещенным"
+        И если нахожу не подходящий символ - возвращаю false
+
+        for (int i = 0; i < email.length(); i++) {
+            char ch = email.charAt(i);
+
+            // Если символ удовлетворяет одному из условий на "правильность"
+            boolean isPass = (Character.isAlphabetic(ch) ||
+                    Character.isDigit(ch) ||
+                    ch == '-' ||
+                    ch == '_' ||
+                    ch == '.' ||
+                    ch == '@');
+
+            // Если любой символ НЕ подходящий, сразу возвращаем false
+            if (!isPass) return false;
+
+
+            Равнозначные выражения.
+            if (!Character.isAlphabetic(ch) && !Character.isDigit(ch) && ch != '-' && ch != '_' && ch != '.' && ch != '@') return false;
+            if (!(Character.isAlphabetic(ch) || Character.isDigit(ch) || ch == '-' || ch == '_' || ch == '.' || ch == '@')) return false;
+
+         */
 
         return true;
     }
@@ -110,12 +140,18 @@ public class Person {
                 return true;
             }
         }
-
+/*
+String symbols = "!%$@&*()[].,-";
+ for (int i = 0; i < password.length(); i++) {
+            char ch = password.charAt(i);
+if (symbols.indexOf(ch) >= 0) isSpecialSymbol = true;
+            // if (symbols.contains(String.valueOf(ch))) isSpecialSymbol = true;
+ */
         return false;
     }
 
     public boolean isPasswordValid(String password){
-       boolean b1 = password.length() >= 8;
+       boolean b1 = password.length() >= 8 || password == null;
        if (!b1){
            System.out.println("Check pass length");
        }
