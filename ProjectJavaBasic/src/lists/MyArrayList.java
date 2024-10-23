@@ -1,8 +1,12 @@
 package lists;
 
 import java.lang.reflect.Array;
+import java.util.Iterator;
+/*
 
-    public class MyArrayList<T> implements MyList<T> {
+ */
+
+    public class MyArrayList<T> implements MyList<T> ,Iterable<T>{
         private T[] array;
         private int cursor; // присвоено значение по умолчанию = 0;
 
@@ -230,14 +234,36 @@ import java.lang.reflect.Array;
 
             return result;
 
-
 //          Этот код вызывает ошибку
 //        T[] result = (T[]) new Object[cursor];
 //        for (int i = 0; i < result.length; i++) {
 //            result[i] = array[i];
 //        }
 
+        }
 
+        @Override
+        public Iterator<T> iterator() {
+            return new MyIterator();
+        }
+        private class MyIterator implements Iterator<T>{
+
+            int currentIndex = 0;
+            //boolean hasNext(); to check if there is next element
+
+            @Override
+            public boolean hasNext() {
+                return currentIndex < cursor;
+            }
+
+            @Override
+            public T next() {
+                T value = array[currentIndex];
+                currentIndex++;
+                return value;
+
+                //return array[currentIndex];
+            }
         }
     }
 

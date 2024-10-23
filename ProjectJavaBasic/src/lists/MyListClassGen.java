@@ -1,8 +1,9 @@
 package lists;
 
 import java.lang.reflect.Array;
+import java.util.Iterator;
 
-public class MyListClassGen<T> implements MyList<T> {
+public class MyListClassGen<T> implements MyList<T>, Iterable<T> {
 
     private T[] array;
     private int cursor;
@@ -158,4 +159,8 @@ public class MyListClassGen<T> implements MyList<T> {
     }
 
 
+    @Override
+    public Iterator<T> iterator() {
+        return null;
+    }
 }

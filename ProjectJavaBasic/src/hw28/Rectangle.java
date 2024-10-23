@@ -120,6 +120,23 @@ public class Rectangle {
                 rectangles.remove(i);
             }
         }
+
+        /*
+        one more option
+        while(rectangle.contains(rectangleToRemove)){
+        rectangle.remove(rectangleToRemove)
+        }
+         */
+       /*
+       leave only one duplicate and delete all the rest
+        MyList<Rectangle>result = new MyArrayList<>();
+        for (int i = 0; i < result.size();i++){
+            if (result.contains(rectangle.get(i))){
+                result.add(rectangle.get(i));
+            }
+
+        }
+        return result;*/
     }
 
     public static void main(String[] args) {
@@ -148,6 +165,7 @@ public class Rectangle {
         MyArrayList<Rectangle> rectangles = new MyArrayList<>();
 
         rectangles.add(new Rectangle(4.0, 2.0));
+        rectangles.add(new Rectangle(5.0, 3.0)); // Дубликат
         rectangles.add(new Rectangle(5.0, 3.0)); // Дубликат
         rectangles.add(new Rectangle(6.0, 4.0));
         rectangles.add(new Rectangle(5.0, 3.0)); // Дубликат
