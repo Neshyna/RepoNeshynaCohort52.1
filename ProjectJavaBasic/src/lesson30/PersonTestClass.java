@@ -20,12 +20,12 @@ public class PersonTestClass {
         person = new Person(startEmail, startPassword);
     }
     /*
-    1 Take valid email
-    2 set valid email person
-    3 expected : persons email  in the field email is valid equals set email
-    4 check equality person.getEmail with valid email we've set
-
+    1. Берем валидный email
+    2. Устанавливает сеттером валидный email person-у
+    3. Мы ожидаем: что у person в поле email будет валидный email, который мы установили на шаге 2
+    4. Проверить равенство person.getEmail() c валидным email, который мы устанавливали
      */
+
 
     @Test
     void testValidEmailSet() {
@@ -36,11 +36,12 @@ public class PersonTestClass {
     }
 
     /*
-    1. take invalid email
-    2. set invalid email with setter
-    3. expected: email is not set, person email not equal invalid email
-    4. expected: email is the same
-
+    1. Берем не валидный email
+    2. Устанавливаем сеттером не валидный email person-у
+    3. Ожидаем результат: Email установлен не будет.
+    1) Т.е. значение email у person не будет равно не валидному email
+    2) Значение поля email у person останется прежним
+    4.
      */
     @ParameterizedTest
     @MethodSource("invalidEmailData")
@@ -52,21 +53,47 @@ public class PersonTestClass {
     static Stream<String> invalidEmailData(){
         return Stream.of(
                 "testmail.net",
-                "test@mail.net",
+                "test@@mail.net",
                 "test@mai@l.net",
                 "test@mailnet",
-                "test@mail.net.t",
+                "test@mail.ne.t",
                 "test@mail.net.",
                 "test@mailne.t",
+                "test@ mail.net",
+                "test@ma!il.net",
+                "t#est@mail.net",
                 "test@mail.?net",
                 "@testmail.net",
-                "123Test@net",
-                "_t@mail.ru"
+                "1test@mail.net",
+                "_test@mail.net",
+                "-t@mail.net",
+                ".est@mail.net",
+                "test+1@mail.net"
+                //add upper case
         );
     }
     @Test
     void testValidPasswordSet(){
-        String validEmail = "Test_123";
+        String validPassword = "Test_123";
+        person.setPassword(validPassword);
+        System.out.println("validPassword: " + person.getPassword());
+        Assertions.assertEquals(validPassword,person.getPassword());
+    }
+    @ParameterizedTest
+    @MethodSource("invalidPassword")
+    void testInvalidPassword(String invalidPassword){
+        person.setPassword(invalidPassword);
+        Assertions.assertEquals(startPassword,person.getPassword());
+        Assertions.assertNotEquals(invalidPassword,person.getPassword());
+    }
+    static Stream<String> invalidPassword(){
+        return Stream.of(
+                "Test_1",//length less than 8
+                "Test_test",//no numbers
+                "TEST_123",//no lower case
+                "test_123",//no upper case
+                "Test123456"//no special symbol
+        );
     }
 
 }
