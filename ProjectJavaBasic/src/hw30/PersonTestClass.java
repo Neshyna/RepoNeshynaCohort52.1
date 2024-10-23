@@ -1,4 +1,4 @@
-package lesson30;
+package hw30;
 
 import hw27.Person;
 import org.junit.jupiter.api.Assertions;
