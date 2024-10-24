@@ -1,4 +1,4 @@
-package lesson1;
+package service;
 
 public class Hello { // declare class Hello обьявляем класс хэлоу
     // here i write code

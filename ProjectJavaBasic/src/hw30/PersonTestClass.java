@@ -75,6 +75,7 @@ public class PersonTestClass {
     @Test
     void testValidPasswordSet(){
         String validPassword = "Test_123";
+        //i.e. String validPassword = "Test123"; with incorrect pass will fail
         person.setPassword(validPassword);
         System.out.println("validPassword: " + person.getPassword());
         Assertions.assertEquals(validPassword,person.getPassword());
@@ -93,7 +94,9 @@ public class PersonTestClass {
                 "TEST_123",//no lower case
                 "test_123",//no upper case
                 "Test123456"//no special symbol
+                //"Test_123" test will fail as well as email passed gut
         );
     }
+
 
 }
