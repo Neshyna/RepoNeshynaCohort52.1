@@ -3,6 +3,7 @@ package hw30;
 import hw27.Person;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -17,7 +18,7 @@ public class PersonTestClass {
 
     @BeforeEach
     void setUp() {
-        person = new Person(startEmail, startPassword);
+        person = new Person(startEmail,startPassword);
     }
     /*
     1. Берем валидный email
@@ -47,8 +48,8 @@ public class PersonTestClass {
     @MethodSource("invalidEmailData")
     void testInvalidEmailSet(String invalidEmail) {
         person.setEmail(invalidEmail);
-        Assertions.assertNotEquals(invalidEmail, person.getEmail());
-        Assertions.assertEquals(startEmail, person.getEmail());
+        Assertions.assertNotEquals(invalidEmail,person.getEmail());
+        Assertions.assertEquals(startEmail,person.getEmail());
     }
     static Stream<String> invalidEmailData(){
         return Stream.of(
@@ -97,6 +98,14 @@ public class PersonTestClass {
                 //"Test_123" test will fail as well as email passed gut
         );
     }
+    @Disabled
+    @Test
+    void assertNulEquals(){
+        // При сравнеие на равенство null с null - assertEquals выдает true
+        String string = null;
+        Assertions.assertEquals(null, string);
+    }
+
 
 
 }
