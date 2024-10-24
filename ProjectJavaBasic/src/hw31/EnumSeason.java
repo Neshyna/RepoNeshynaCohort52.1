@@ -5,6 +5,7 @@ Task 1
 возвращающими среднюю температуру для каждого времени года.
  */
 public enum EnumSeason {
+
     SUMMER(25.3),
     AUTUMN(12.4),
     WINTER(4.9),
@@ -15,9 +16,11 @@ public enum EnumSeason {
     EnumSeason(double averageTemterature) {
         this.averageTemterature = averageTemterature;
     }
+
     public double getAverageTemterature() {
         return averageTemterature;
     }
+
     public String seasonMethod() {
         return "season: " + this.name() +
         ", average temperature: " + this.averageTemterature;
